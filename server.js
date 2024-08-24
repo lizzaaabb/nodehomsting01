@@ -26,12 +26,6 @@ app.post('/submit', (req, res) => {
     `);
 });
 
-// Route to serve the index.html file (optional, since static files are served)
-// This route can be omitted if you only need to serve static files from "public"
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 // Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

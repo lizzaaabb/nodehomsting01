@@ -1,4 +1,4 @@
-# Use Node.js v20
+# Use Node.js v20 (or your specific version)
 FROM node:20
 
 # Create app directory
@@ -11,8 +11,8 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Expose the port
+# Expose the port your app runs on
 EXPOSE 3000
 
-# Run the application
-CMD [ "node", "script.js" ]
+# Command to run your app
+CMD [ "node", "server.js" ]
