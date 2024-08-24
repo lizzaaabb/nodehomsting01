@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -6,16 +5,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Serve static files from the root directory
-app.use(express.static(__dirname));
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Use bodyParser to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Route to serve the index.html file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // Route to handle form submission
 app.post('/submit', (req, res) => {
@@ -30,6 +24,12 @@ app.post('/submit', (req, res) => {
         </body>
         </html>
     `);
+});
+
+// Route to serve the index.html file (optional, since static files are served)
+// This route can be omitted if you only need to serve static files from "public"
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start the server
